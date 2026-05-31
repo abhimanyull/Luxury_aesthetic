@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIMOS | Luxury Affiliate Collection</title>
+    <meta name="description" content="Luxury products for both men and women - Premium watches, footwear, skincare, and fashion with affiliate links">
+    
+    <!-- Pinterest Rich Pins Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NIMOS | Luxury Affiliate Collection">
+    <meta property="og:description" content="Curated luxury products for men and women - watches, shoes, skincare, fashion">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+    <meta name="pinterest" content="nopin">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL RESETS & FONTS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .brand-logo {
+            font-family: 'Playfair Display', serif;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .brand-logo {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #fff;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .nav-links a {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #d4af37; /* Gold accent */
+        }
+        .pinterest-btn {
+            background: #e60023;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .pinterest-btn:hover {
+            background: #ad081b;
+        }
+
+        /* --- HERO SPLIT SCREEN --- */
+        .hero {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            padding-top: 70px;
+        }
+        .split {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            transition: flex 0.5s ease;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        /* Men's Side: Dark & Minimalist */
+        .split.men {
+            background-color: #0a0a0a;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Women's Side: Bright & Gentle */
+        .split.women {
+            background-color: #f7f4f0;
+            color: #222;
+        }
+        .split h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .split p {
+            font-size: 14px;
+            max-width: 400px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        .split.men p { color: #aaa; }
+        .split.women p { color: #555; }
+        
+        .cta-btn {
+            padding: 12px 35px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .split.men .cta-btn {
+            border-color: #fff;
+            color: #fff;
+            background: transparent;
+        }
+        .split.men .cta-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+        .split.women .cta-btn {
+            border-color: #222;
+            color: #222;
+            background: transparent;
+        }
+        .split.women .cta-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+
+        /* --- PRODUCT SECTIONS --- */
+        .section-title {
+            text-align: center;
+            padding: 80px 20px 40px 20px;
+            font-size: 32px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Men's Showcase (Dark Zone) */
+        #mens-collection {
+            background-color: #0b0b0b;
+            color: #fff;
+            padding-bottom: 80px;
+        }
+        #mens-collection .section-title { color: #fff; border-top: 1px solid #1a1a1a; }
+
+        /* Women's Showcase (Bright Zone) */
+        #womens-collection {
+            background-color: #faf8f5;
+            color: #222;
+            padding-bottom: 80px;
+        }
+        #womens-collection .section-title { color: #222; }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Distinct card treatments */
+        #mens-collection .product-card {
+            border-color: rgba(255,255,255,0.05);
+        }
+        #mens-collection .product-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+        }
+        #womens-collection .product-card {
+            border-color: rgba(0,0,0,0.05);
+        }
+        #womens-collection .product-card:hover {
+            border-color: #c3a39e; /* Soft rose gold accent */
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            background-color: #ddd;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            color: #777;
+            font-size: 14px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Placeholder styling before you drop your real product images */
+        #mens-collection .product-image { background-color: #161616; color: #444; }
+        #womens-collection .product-image { background-color: #eae5df; color: #888; }
+
+        .pin-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e60023;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .product-card:hover .pin-overlay {
+            opacity: 1;
+        }
+
+        .product-brand {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: #d4af37;
+        }
+        #womens-collection .product-brand { color: #bc8f8f; }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .affiliate-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 20px;
+            border: 1px solid;
+            transition: all 0.3s;
+        }
+        #mens-collection .affiliate-link { border-color: #fff; color: #fff; }
+        #mens-collection .affiliate-link:hover { background: #fff; color: #000; }
+        
+        #womens-collection .affiliate-link { border-color: #222; color: #222; }
+        #womens-collection .affiliate-link:hover { background: #222; color: #fff; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            color: #666;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-top: 1px solid #1a1a1a;
+        }
+        .footer-links {
+            margin: 15px 0;
+        }
+        .footer-links a {
+            color: #888;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; }
+            .split { padding: 60px 20px; }
+            .nav-links { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">NIMOS</a>
+            <nav class="nav-links">
+                <a href="#mens-collection">Men's Luxury</a>
+                <a href="#womens-collection">Women's Luxury</a>
+                <a href="https://pinterest.com/your-pinterest-username" target="_blank" class="pinterest-btn">📌 Follow on Pinterest</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="split men">
+            <h1>MEN'S COLLECTION</h1>
+            <p>Curated minimalist timepieces, fine footwear, and premium essentials crafted for the modern gentleman.</p>
+            <a href="#mens-collection" class="cta-btn">Explore Watches & More</a>
+        </div>
+        <div class="split women">
+            <h1>WOMEN'S COLLECTION</h1>
+            <p>Gentle aesthetics, high-end skincare, and timeless fashion statements designed with pure elegance.</p>
+            <a href="#womens-collection" class="cta-btn">Explore Beauty & Style</a>
+        </div>
+    </section>
+
+    <section id="mens-collection">
+        <h2 class="section-title">The Men's Edit</h2>
+        <div class="product-grid">
+            
+            <div class="product-card" data-product-id="mens-1">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Premium Timepieces</div>
+                <h3 class="product-name">Minimalist Classic Gold</h3>
+                <p class="product-price">From $299</p>
+                <a href="https://amazon.com/s?k=luxury+mens+watch+gold" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+            <div class="product-card" data-product-id="mens-2">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1548239953-2c6de9612da3?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Footwear</div>
+                <h3 class="product-name">Handcrafted Oxford Shoes</h3>
+                <p class="product-price">From $450</p>
+                <a href="https://amazon.com/s?k=handcrafted+oxford+shoes+mens" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+            <div class="product-card" data-product-id="mens-3">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Curated Gifts</div>
+                <h3 class="product-name">Matte Black Essential Set</h3>
+                <p class="product-price">From $179</p>
+                <a href="https://amazon.com/s?k=luxury+mens+gift+set" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="womens-collection">
+        <h2 class="section-title">The Women's Edit</h2>
+        <div class="product-grid">
+            
+            <div class="product-card" data-product-id="womens-1">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Skincare & Rituals</div>
+                <h3 class="product-name">Hydrating Botanical Serum</h3>
+                <p class="product-price">From $89</p>
+                <a href="https://amazon.com/s?k=luxury+botanical+skincare+serum" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+            <div class="product-card" data-product-id="womens-2">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Timepieces</div>
+                <h3 class="product-name">Rose Gold Mesh Minimalist</h3>
+                <p class="product-price">From $349</p>
+                <a href="https://amazon.com/s?k=rose+gold+womens+watch" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+            <div class="product-card" data-product-id="womens-3">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=500&fit=crop');">
+                    <span class="pin-overlay" onclick="shareToPinterest(this)">📌 Pin It</span>
+                </div>
+                <div class="product-brand">Luxury Fashion</div>
+                <h3 class="product-name">Satin Silk Evening Blazer</h3>
+                <p class="product-price">From $599</p>
+                <a href="https://amazon.com/s?k=satin+silk+blazer+womens" class="affiliate-link" target="_blank" rel="noopener noreferrer">Shop Collection</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 NIMOS. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="https://pinterest.com/your-pinterest-username" target="_blank">Pinterest</a>
+            <a href="https://instagram.com/your-instagram" target="_blank">Instagram</a>
+            <a href="mailto:contact@nimos.com">Contact</a>
+        </div>
+        <p style="margin-top: 15px; font-size: 10px; color: #444;">As an affiliate, we earn from qualifying purchases. These are Amazon affiliate links.</p>
+    </footer>
+
+    <script>
+        // Scroll effect on header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.background = 'rgba(0, 0, 0, 0.85)';
+            }
+        });
+
+        // Pinterest Share Function
+        function shareToPinterest(element) {
+            const card = element.closest('.product-card');
+            const productName = card.querySelector('.product-name').textContent;
+            const productImage = card.querySelector('.product-image').style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/g, '$1');
+            const productLink = card.querySelector('.affiliate-link').href;
+            const affiliateLink = encodeURIComponent(productLink);
+            
+            // Pinterest Save URL (Rich Pin)
+            const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(productImage)}&description=${encodeURIComponent(productName + ' - NIMOS Luxury Collection')}`;
+            
+            window.open(pinterestUrl, 'pinterest-share', 'width=750,height=600');
+        }
+
+        // Track affiliate clicks (optional - for analytics)
+        document.querySelectorAll('.affiliate-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                console.log('Affiliate link clicked:', productName);
+                // You can send this to Google Analytics or your tracking service
+            });
+        });
+    </script>
+</body>
+</html>
